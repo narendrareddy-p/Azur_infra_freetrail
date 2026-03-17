@@ -48,11 +48,13 @@ jobs:
       - name: Terraform Plan
         run: terraform plan -out=tfplan
 
-      - name: Upload Plan
+      - name: Upload Plan Artifact
         uses: actions/upload-artifact@v4
         with:
-          name: tfplan
-          path: tfplan
+          name: terraform-plan
+          path: |
+            tfplan
+            .terraform.lock.hcl
 
   terraform-apply:
   
@@ -76,7 +78,7 @@ jobs:
       - name: Download Plan
         uses: actions/download-artifact@v4
         with:
-          name: tfplan
+          name: terraform-plan
 
       - name: Terraform Apply
         run: terraform apply tfplan
