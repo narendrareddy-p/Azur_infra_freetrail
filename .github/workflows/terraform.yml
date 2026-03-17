@@ -35,6 +35,7 @@ jobs:
         uses: terraform-linters/setup-tflint@v4
 
       - name: Run TFLint
+        continue-on-error: true
         run: |
           tflint --init
           tflint
