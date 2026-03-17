@@ -31,17 +31,13 @@ jobs:
       - name: Terraform Validate
         run: terraform validate
 
-       # Install TFLint
       - name: Setup TFLint
         uses: terraform-linters/setup-tflint@v4
 
-      # Install Azure lint rules
-      - name: Initialize TFLint
-        run: tflint --init
-
-      # Run lint scan
       - name: Run TFLint
-        run: tflint
+        run: |
+          tflint --init
+          tflintt
      
       # - name: Terraform Security Scan
       #   uses: bridgecrewio/checkov-action@v12
