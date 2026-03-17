@@ -9,9 +9,11 @@ module "resource_group" {
   location            = "eastus"
 }
 
+/*
 module "resource_group_prod" {
 
   source = "git::https://github.com/narendrareddy-p/modules.git//resource-group?ref=feature"
   resource_group_name = "rg-prod-demo"
   location            = "eastus"
 }
+*/
