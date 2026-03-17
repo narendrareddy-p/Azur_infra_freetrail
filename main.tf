@@ -1,9 +1,3 @@
-
-provider "azurerm" {
-  features {}
-}
-
-
 module "resource_group" {
 
   source = "git::https://github.com/narendrareddy-p/modules.git//resource-group?ref=feature"
