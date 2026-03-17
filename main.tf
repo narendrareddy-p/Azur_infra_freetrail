@@ -13,7 +13,7 @@ provider "azurerm" {
 module "resource_group" {
 
   source = "git::https://github.com/narendrareddy-p/modules.git//resource-group?ref=feature"
-  resource_group_name =    "rg-dev-demo"
+  resource_group_name   =    "rg-dev-demo"
   location              =   "eastus"
 }
 
