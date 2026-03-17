@@ -37,7 +37,7 @@ jobs:
       - name: Run TFLint
         run: |
           tflint --init
-          tflintt
+          tflint
      
       # - name: Terraform Security Scan
       #   uses: bridgecrewio/checkov-action@v12
