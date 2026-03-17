@@ -29,6 +29,6 @@ module "aks" {
   source    = "git::https://github.com/narendrareddy-p/modules.git//aks?ref=feature"
   aks_name  = "dev-aks"
   location  = "eastus"
-  resource_group_name   = "rg-dev-demo"
+  resource_group_name  = "rg-dev-demo"
   subnet_id = module.network.subnet_id
 }
