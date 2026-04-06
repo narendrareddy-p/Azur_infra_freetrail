@@ -24,6 +24,7 @@ resource "azurerm_storage_container" "devops-infra" {
   name                  = "devops-infra"
   storage_account_name    = azurerm_storage_account.devopsstorage996697.name
   container_access_type = "private"
+  depends_on = [ azurerm_storage_account.azurerm_storage_account.devopsstorage996697 ]
 }
 /*
 ## Blob
@@ -34,3 +35,13 @@ resource "azurerm_storage_blob" "example" {
   type                   = "Block"
   source                 = "some-local-file.zip"
 } */
+
+## Virtual Network
+
+resource "azurerm_virtual_network" "vnet" {
+    name = devops-infra-vnet
+    location = azurerm_resource_group.devops.location
+    resource_group_name = azurerm_resource_group.devops.name
+    address_space = ["10.0.1.0/24"]
+  
+}
