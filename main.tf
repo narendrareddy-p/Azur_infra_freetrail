@@ -45,5 +45,12 @@ resource "azurerm_virtual_network" "vnet" {
     resource_group_name = azurerm_resource_group.devops.name
     address_space = ["10.0.1.0/24"]
     tags = azurerm_resource_group.devops.tags
+
+    ##Subnets
+
+    subnet = {
+        name = "infra-devops-dev"
+        address_prefixes = ["10.0.1.1/28"]
+    }
   
 }
