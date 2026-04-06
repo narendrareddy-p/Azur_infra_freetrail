@@ -1,19 +1,8 @@
-resource_groups = {
-  team1 = {
-    resource_group_name     = "rg-team1-dev"
-    location = "Central India"
-    tags = {
-      team = "team1"
-      env  = "dev"
-    }
-  }
+##Resource group block
+rg_name  = "rg-nonprod-app"
+location = "Central India"
 
-  team2 = {
-    resource_group_name    = "rg-team2-dev"
-    location = "East US"
-    tags = {
-      team = "team2"
-      env  = "dev"
-    }
-  }
+tags = {
+  env  = "non-prod"
+  team = "devops"
 }
