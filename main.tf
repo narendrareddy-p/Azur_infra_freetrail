@@ -2,7 +2,7 @@
 
 resource "azurerm_resource_group" "devops" {
   name     = "Devops-infra"
-  location = "East US"
+  location = local.resource_location
   tags = {
     Environment = "Dev"
     Project = "Demo"
