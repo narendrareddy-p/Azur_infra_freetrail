@@ -1,6 +1,6 @@
 ##Resource group block
 rg_name  = "rg-nonprod-app"
-location = "Central India"
+location = "East Us"
 
 tags = {
   env  = "non-prod"
