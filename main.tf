@@ -50,7 +50,7 @@ resource "azurerm_virtual_network" "vnet" {
 
     subnet = {
         name = "infra-devops-dev"
-        address_prefixes = ["10.0.1.1/28"]
+        address_prefixes = ["10.0.1.0/28"]
     }
   
 }
