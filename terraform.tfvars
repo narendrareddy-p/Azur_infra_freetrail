@@ -1,5 +1,5 @@
 ##Resource group block
-rg_name  = "rg-nonprod-app"
+rg_name  = "rg-nonprod-devops"
 location = "East Us"
 
 tags = {
