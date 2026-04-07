@@ -146,6 +146,7 @@ resource "azurerm_windows_virtual_machine" "devops-vm-demo" {
   size = var.vm_size
   admin_username = var.admin_username #"narendra"
   admin_password = "Narendra@19"
+  vm_agent_platform_updates_enabled                      = true
   network_interface_ids  = [
     azurerm_network_interface.devops-infra.id,
 
@@ -162,4 +163,16 @@ resource "azurerm_windows_virtual_machine" "devops-vm-demo" {
     version   = "latest"
   }
 
+}
+
+##Data disks creation
+
+resource "azurerm_managed_disk" "devops-datadisk" {
+
+    name = "Devops-data-disks"
+    resource_group_name = azurerm_resource_group.devops.name
+    location = azurerm_resource_group.devops.location
+    storage_account_type = "Standard_LRS"
+    disk_size_gb = "50"
+  
 }
