@@ -89,5 +89,18 @@ resource "azurerm_public_ip" "devops-demo" {
     resource_group_name = azurerm_resource_group.devops.name
     allocation_method = "Static"
     sku = "Standard"
+
+    tags = azurerm_resource_group.devops.tags
+  
+}
+
+##Network security group
+
+resource "azurerm_network_security_group" "devops-nsg" {
+
+    name = "Devops-nsg"
+    resource_group_name = azurerm_resource_group.devops.name
+    location = azurerm_resource_group.devops.location
+    tags = azurerm_resource_group.devops.tags
   
 }
