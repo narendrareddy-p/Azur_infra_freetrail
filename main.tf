@@ -76,13 +76,14 @@ resource "azurerm_network_interface" "devops-infra" {
       name = "internal"
       subnet_id = azurerm_subnet.subnet.id
       private_ip_address_allocation = "Dynamic"
+      #Associating public ip to the NIC
       public_ip_address_id = azurerm_public_ip.devops-demo.id
     }
 
     tags = azurerm_resource_group.devops.tags
   
 }
-
+##Public ip address creation
 resource "azurerm_public_ip" "devops-demo" {
     name = "Devops-public-ip"
     location = azurerm_resource_group.devops.location
@@ -101,6 +102,25 @@ resource "azurerm_network_security_group" "devops-nsg" {
     name = "Devops-nsg"
     resource_group_name = azurerm_resource_group.devops.name
     location = azurerm_resource_group.devops.location
+    security_rule = {
+        name                       = "Allow_RDP"
+        priority                   = 100
+        direction                  = "Inbound"
+        access                     = "Allow"
+        protocol                   = "Tcp"
+        source_port_range          = "3389"
+        destination_port_range     = "*"
+        source_address_prefix      = "*"
+        destination_address_prefix = "*"
+    }
     tags = azurerm_resource_group.devops.tags
+  
+}
+
+##Associating the NSG to the subnet
+
+resource "azurerm_network_interface_security_group_association" "devops-infra" {
+    subnet_id = azurerm_subnet.subnet.id
+    network_security_group_id = azurerm_network_security_group.devops-nsg.id
   
 }
