@@ -1,5 +1,5 @@
 ## Resource Group
-/*
+
 resource "azurerm_resource_group" "devops" {
   name     = "Devops-infra"
   location = local.resource_location
@@ -27,7 +27,7 @@ resource "azurerm_storage_container" "devops-infra" {
   container_access_type = "private"
 
 }
-/*
+
 ## Blob
 resource "azurerm_storage_blob" "example" {
   name                   = "my-awesome-content.zip"
@@ -35,10 +35,10 @@ resource "azurerm_storage_blob" "example" {
   storage_container_name = azurerm_storage_container.devops-infra.name
   type                   = "Block"
   source                 = "some-local-file.zip"
-} */
+} 
 
 ## Virtual Network
-/*
+
 resource "azurerm_virtual_network" "vnet" {
     name = "devops-infra-vnet"
     location = azurerm_resource_group.devops.location
@@ -142,7 +142,7 @@ resource "azurerm_windows_virtual_machine" "devops-vm-demo" {
   
   name = "Devops-infra-vm"
   resource_group_name = azurerm_resource_group.devops.name
-  location = "UK West"
+  location = azurerm_resource_group.devops.location
   size = "Standard_B2ats_v2"
   admin_username = "narendra"
   admin_password = "Narendra@19"
@@ -158,10 +158,8 @@ resource "azurerm_windows_virtual_machine" "devops-vm-demo" {
   source_image_reference {
     publisher = "MicrosoftWindowsServer"
     offer     = "WindowsServer"
-    sku       = "2022-Datacenter"
+    sku       = "2025-Datacenter"
     version   = "latest"
   }
 
 }
-
-*/
