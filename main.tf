@@ -76,8 +76,17 @@ resource "azurerm_network_interface" "devops-infra" {
       name = "internal"
       subnet_id = azurerm_subnet.subnet.id
       private_ip_address_allocation = "Dynamic"
+      public_ip_address_id = azurerm_public_ip.devops-demo.id
     }
 
     tags = azurerm_resource_group.devops.tags
+  
+}
+
+resource "azurerm_public_ip" "devops-demo" {
+    name = "Devops-public-ip"
+    location = azurerm_resource_group.devops.location
+    resource_group_name = azurerm_resource_group.devops.name
+    allocation_method = "Static"
   
 }
