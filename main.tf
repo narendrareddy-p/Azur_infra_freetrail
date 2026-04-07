@@ -27,7 +27,7 @@ resource "azurerm_storage_container" "devops-infra" {
   container_access_type = "private"
 
 }
-
+/*
 ## Blob
 resource "azurerm_storage_blob" "example" {
   name                   = "my-awesome-content.zip"
@@ -35,7 +35,7 @@ resource "azurerm_storage_blob" "example" {
   storage_container_name = azurerm_storage_container.devops-infra.name
   type                   = "Block"
   source                 = "some-local-file.zip"
-} 
+} */
 
 ## Virtual Network
 
