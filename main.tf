@@ -1,5 +1,5 @@
 ## Resource Group
-
+/*
 resource "azurerm_resource_group" "devops" {
   name     = "Devops-infra"
   location = local.resource_location
@@ -38,7 +38,7 @@ resource "azurerm_storage_blob" "example" {
 } */
 
 ## Virtual Network
-
+/*
 resource "azurerm_virtual_network" "vnet" {
     name = "devops-infra-vnet"
     location = azurerm_resource_group.devops.location
@@ -163,3 +163,5 @@ resource "azurerm_windows_virtual_machine" "devops-vm-demo" {
   }
 
 }
+
+*/
