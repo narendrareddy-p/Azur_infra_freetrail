@@ -91,7 +91,7 @@ resource "azurerm_network_interface" "devops-infratwo" {
 
   ip_configuration {
     name = "internalone"
-    subnet_id = azurerm_subnet_subnet.id
+    subnet_id = azurerm_subnet.subnet.id
     private_ip_address_allocation = "Dynamic"
 
   }
