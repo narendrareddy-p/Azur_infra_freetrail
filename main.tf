@@ -143,7 +143,7 @@ resource "azurerm_windows_virtual_machine" "devops-vm-demo" {
   name = "Devops-infra-vm"
   resource_group_name = azurerm_resource_group.devops.name
   location = azurerm_resource_group.devops.location
-  size = "Standard_Dv2"
+  size = "Standard_B2s"
   admin_username = "narendra"
   admin_password = "Narendra@19"
   network_interface_ids  = [
@@ -153,7 +153,7 @@ resource "azurerm_windows_virtual_machine" "devops-vm-demo" {
 
   os_disk {
     caching              = "ReadWrite"
-    storage_account_type = "Standard_B2s"
+    storage_account_type = "Standard_LRS"
   }
   source_image_reference {
     publisher = "MicrosoftWindowsServer"
