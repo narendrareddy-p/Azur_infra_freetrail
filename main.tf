@@ -177,3 +177,12 @@ resource "azurerm_managed_disk" "devops-datadisk" {
      create_option        = "Empty"
   
 }
+
+## Attach data disks to the virtual machine
+
+resource "azurerm_virtual_machine_data_disk_attachment" "data" {
+  virtual_machine_id = azurerm_windows_virtual_machine.devops-vm-demo.id
+  managed_disk_id = azurerm_managed_disk.devops-datadisk.id
+  lun = "10"
+  caching = "ReadWrite"
+}
