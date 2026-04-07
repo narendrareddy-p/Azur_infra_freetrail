@@ -174,5 +174,6 @@ resource "azurerm_managed_disk" "devops-datadisk" {
     location = azurerm_resource_group.devops.location
     storage_account_type = "Standard_LRS"
     disk_size_gb = "50"
+     create_option        = "Empty"
   
 }
