@@ -63,3 +63,19 @@ resource "azurerm_subnet" "subnet1" {
     address_prefixes = [local.subnet_address_prefix[1]]
   
 }
+
+##Network Interface
+
+resource "azurerm_network_interface" "devops-infra" {
+
+    name = "devops-infra-nic"
+    location = azurerm_virtual_network.vnet.location
+    resource_group_name = azurerm_resource_group.devops
+
+    ip_configuration {
+      name = "internal"
+      subnet_id = "azurerm_subnet.subnet.id"
+      private_ip_address_allocation = "Dynamic"
+    }
+  
+}
