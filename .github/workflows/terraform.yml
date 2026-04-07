@@ -1,4 +1,4 @@
-name: Terraform Deployment
+name: Azure_Infra_Deployment
 
 on:
   push:
@@ -54,6 +54,7 @@ jobs:
         with:
           name: tfplan
           path: tfplan 
+
   Terraform_apply:
     name: Terraform Apply
     runs-on: ubuntu-latest

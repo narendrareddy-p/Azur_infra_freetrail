@@ -140,11 +140,11 @@ resource "azurerm_subnet_network_security_group_association" "devops-infra" {
 
 resource "azurerm_windows_virtual_machine" "devops-vm-demo" {
   
-  name = "Devops-infra-vm"
+  name = var.vm_name #"Devops-infra-vm"
   resource_group_name = azurerm_resource_group.devops.name
   location = azurerm_resource_group.devops.location
-  size = "Standard_B2ats_v2"
-  admin_username = "narendra"
+  size = var.vm_size
+  admin_username = var.admin_username #"narendra"
   admin_password = "Narendra@19"
   network_interface_ids  = [
     azurerm_network_interface.devops-infra.id,
