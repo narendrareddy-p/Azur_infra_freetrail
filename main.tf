@@ -47,7 +47,7 @@ resource "azurerm_virtual_network" "vnet" {
     tags = azurerm_resource_group.devops.tags
   
 }
-
+##subnet creation
 resource "azurerm_subnet" "subnet" {
     name = "infra_devops_dev"
     virtual_network_name = azurerm_virtual_network.vnet.name
@@ -134,4 +134,32 @@ resource "azurerm_subnet_network_security_group_association" "devops-infra" {
     subnet_id = azurerm_subnet.subnet.id
     network_security_group_id = azurerm_network_security_group.devops-nsg.id
   
+}
+
+##Creating a windows vm
+
+resource "azurerm_windows_virtual_machine" "devops-vm-demo" {
+  
+  name = "Devops-infra-vm"
+  resource_group_name = azurerm_resource_group.devops.name
+  location = azurerm_resource_group.devops.location
+  size = "Standard_Dv2"
+  admin_username = "narendra"
+  admin_password = "Narendra@19"
+  network_interface_ids  = [
+    azurerm_network_interface.devops-infra.id,
+
+  ] 
+
+  os_disk {
+    caching              = "ReadWrite"
+    storage_account_type = "Standard_LRS"
+  }
+  source_image_reference {
+    publisher = "MicrosoftWindowsServer"
+    offer     = "WindowsServer"
+    sku       = "2022-Datacenter"
+    version   = "latest"
+  }
+
 }
