@@ -55,3 +55,11 @@ resource "azurerm_subnet" "subnet" {
     address_prefixes = [local.subnet_address_prefix[0]]
   
 }
+
+resource "azurerm_subnet" "subnet" {
+    name = "infra_devops_dev1"
+    virtual_network_name = azurerm_virtual_network.vnet.name
+    resource_group_name = azurerm_resource_group.devops.name
+    address_prefixes = [local.subnet_address_prefix[1]]
+  
+}
