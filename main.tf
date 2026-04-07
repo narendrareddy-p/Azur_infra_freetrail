@@ -74,8 +74,10 @@ resource "azurerm_network_interface" "devops-infra" {
 
     ip_configuration {
       name = "internal"
-      subnet_id = "azurerm_subnet.subnet.id"
+      subnet_id = azurerm_subnet.subnet.id
       private_ip_address_allocation = "Dynamic"
     }
+
+    tags = azurerm_resource_group.devops.tags
   
 }
