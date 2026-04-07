@@ -142,8 +142,8 @@ resource "azurerm_windows_virtual_machine" "devops-vm-demo" {
   
   name = "Devops-infra-vm"
   resource_group_name = azurerm_resource_group.devops.name
-  location = azurerm_resource_group.devops.location
-  size = "Standard_B2s"
+  location = "UK West"
+  size = "Standard_B2ats_v2"
   admin_username = "narendra"
   admin_password = "Narendra@19"
   network_interface_ids  = [
