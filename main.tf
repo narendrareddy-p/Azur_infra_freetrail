@@ -83,6 +83,19 @@ resource "azurerm_network_interface" "devops-infra" {
     tags = azurerm_resource_group.devops.tags
   
 }
+
+resource "azurerm_network_interface" "devops-infratwo" {
+  name = "devops-infra-two"
+  location = azurerm_resource_group.devops.location
+  resource_group_name = azurerm_resource_group.devops.name
+
+  ip_configuration {
+    name = "internalone"
+    subnet_id = azurerm_subnet_subnet.id
+    private_ip_address_allocation = "Dynamic"
+
+  }
+}
 ##Public ip address creation
 resource "azurerm_public_ip" "devops-demo" {
     name = "Devops-public-ip"
@@ -149,6 +162,7 @@ resource "azurerm_windows_virtual_machine" "devops-vm-demo" {
   vm_agent_platform_updates_enabled                      = true
   network_interface_ids  = [
     azurerm_network_interface.devops-infra.id,
+    azurerm_network_interface.devops-infratwo.id,
 
   ] 
 
