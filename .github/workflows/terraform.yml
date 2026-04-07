@@ -46,7 +46,46 @@ jobs:
       #     directory: .
 
       - name: Terraform Plan
-        run: terraform plan 
+        run: terraform plan -out=tfplan
 
+      # Upload Plan Artifact
+      - name: Upload Plan Artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: tfplan
+          path: tfplan 
+  Terraform_apply:
+    name: Terraform Apply
+    runs-on: ubuntu-latest
+    needs: terraform_plan
+    environment: Dev   # 👈 approval required
+
+    steps:
+      # Checkout repo
+      - name: Checkout Code
+        uses: actions/checkout@v4
+
+      # Setup Terraform
+      - name: Setup Terraform
+        uses: hashicorp/setup-terraform@v3
+
+      # Azure Login
+      - name: Azure Login
+        uses: azure/login@v2
+        with:
+          creds: ${{ secrets.AZURE_CREDENTIALS }}
+
+      # Terraform Init
+      - name: Terraform Init
+        run: terraform init
+
+      # Download Plan Artifact
+      - name: Download Plan Artifact
+        uses: actions/download-artifact@v4
+        with:
+          name: tfplan
+
+      # Terraform Apply using saved plan
       - name: Terraform Apply
-        run: terraform apply -auto-approve
+        run: terraform apply tfplan
+      
