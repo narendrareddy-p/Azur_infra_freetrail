@@ -130,7 +130,7 @@ resource "azurerm_network_security_group" "devops-nsg" {
 
 ##Associating the NSG to the subnet
 
-resource "azurerm_network_interface_security_group_association" "devops-infra" {
+resource "azurerm_subnet_network_security_group_association" "devops-infra" {
     subnet_id = azurerm_subnet.subnet.id
     network_security_group_id = azurerm_network_security_group.devops-nsg.id
   
