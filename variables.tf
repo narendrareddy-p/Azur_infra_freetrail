@@ -21,7 +21,7 @@ variable "container" {
 }
 
 variable "app_subnets" {
-    subnet = {
+    default = {
         subnet1 = {
             name = "devops-opertaion"
             address_prefixes = ["10.0.1.128/29"]
