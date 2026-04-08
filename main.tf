@@ -45,7 +45,7 @@ resource "azurerm_storage_container" "script" {
     count = 3
     name = "script${count.index}"
     storage_account_name = azurerm_storage_account.devopsstorage9966970[1].name
-    container_access_type = "Private"
+    container_access_type = "private"
   
 }
 /*
