@@ -1,12 +1,15 @@
+##Keyvault
 resource "azurerm_key_vault" "devops" {
 
     name = "Devops-SRE"
     resource_group_name = azurerm_resource_group.devops.name
     location = azurerm_resource_group.devops.location
     sku_name = "standard"
-    tenant_id = "1e9ee4a6-43c3-4ee4-9e2c-f2c1ff322e3a"
+    tenant_id = azurerm_client_config.tenant_id
   
 }
+
+##secret
 resource "azurerm_key_vault_secret" "secret" {
   name = "devops"
   value = "Narendra@19"
