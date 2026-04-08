@@ -24,7 +24,7 @@ resource "azurerm_storage_account" "devopsstorage996697" {
 
 resource "azurerm_storage_account" "devopsstorage9966970" {
   
-  count = 2
+  count = 2 ## using count
   name                     = "devopsstorage9966970${count.index}"
   resource_group_name      = azurerm_resource_group.devops.name
   location                 = azurerm_resource_group.devops.location
@@ -39,6 +39,14 @@ resource "azurerm_storage_container" "devops-infra" {
   storage_account_name    = azurerm_storage_account.devopsstorage996697.name
   container_access_type = "private"
 
+}
+
+resource "azurerm_storage_container" "script" {
+    count = 3
+    name = "script${count.index}"
+    storage_account_name = azurerm_storage_account.devopsstorage9966970[1].name
+    container_access_type = "Private"
+  
 }
 /*
 ## Blob
