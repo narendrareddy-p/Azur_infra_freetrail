@@ -14,7 +14,7 @@ variable "vm_size" {
 }
 
 variable "container" {
-  defaults = {
+  default = {
     container1 = "devops"
     container2 = "infra-devops"
   }
