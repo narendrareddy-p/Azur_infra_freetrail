@@ -24,11 +24,11 @@ variable "app_subnets" {
     default = {
         subnet1 = {
             name = "devops-opertaion"
-            address_prefixes = ["10.0.1.17/28"]
+            address_prefixes = ["10.0.1.16/28"]
         }
         subnet2 = {
             name = "infra-operation"
-            address_prefixes = ["10.0.1.33/28"]
+            address_prefixes = ["10.0.1.32/28"]
         }
     } 
 
