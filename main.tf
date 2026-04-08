@@ -253,3 +253,29 @@ resource "azurerm_virtual_machine_data_disk_attachment" "data" {
   lun = "10"
   caching = "ReadWrite"
 }
+
+##Linux virtual machine
+
+resource "azurerm_linux_virtual_machine" "linux-dev" {
+
+    name = "Devops-linux"
+    resource_group_name = azurerm_resource_group.devops.name
+    location = azurerm_resource_group.devops.location
+    size = var.vm_size
+    admin_username = var.admin_username #"narendra"
+    admin_password = "Narendra@19"
+    network_interface_ids = [azurerm_network_interface.devops-infratwo,
+    ]
+    os_disk {
+      caching              = "ReadWrite"
+      storage_account_type = "Standard_LRS"
+    }
+     source_image_reference {
+    publisher = "Canonical"
+    offer     = "0001-com-ubuntu-server-jammy"
+    sku       = "22_04-lts"
+    version   = "latest"
+  }
+}
+
+  
