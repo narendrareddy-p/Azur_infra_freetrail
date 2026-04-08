@@ -12,3 +12,10 @@ variable "vm_size" {
     description = "Size of the virtual machine"
   
 }
+
+variable "container" {
+  defaults = {
+    container1 = "devops"
+    container2 = "infra-devops"
+  }
+}

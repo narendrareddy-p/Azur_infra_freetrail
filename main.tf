@@ -48,6 +48,14 @@ resource "azurerm_storage_container" "script" {
     container_access_type = "private"
   
 }
+
+resource "azurerm_storage_container" "script-infra" {
+    for_each = var.container
+    name = each.value
+    storage_account_name = azurerm_storage_account.devopsstorage9966970[1].name
+    container_access_type = "private"
+  
+}
 /*
 ## Blob
 resource "azurerm_storage_blob" "example" {
