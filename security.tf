@@ -5,7 +5,7 @@ resource "azurerm_key_vault" "devops" {
     resource_group_name = azurerm_resource_group.devops.name
     location = azurerm_resource_group.devops.location
     sku_name = "standard"
-    tenant_id = azurerm_client_config.current.tenant_id
+    tenant_id = data.azurerm_client_config.current.tenant_id
   
 }
 
