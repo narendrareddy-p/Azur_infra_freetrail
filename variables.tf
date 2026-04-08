@@ -19,3 +19,18 @@ variable "container" {
     container2 = "infra-devops"
   }
 }
+
+variable "app_subnets" {
+    subnet = {
+        subnet1 = {
+            name = "devops-opertaion"
+            address_prefixes = ["10.0.1.128/29"]
+        }
+        subnet2 = {
+            name = "infra-operation"
+            address_prefixes = ["10.0.1.136/29"]
+        }
+    } 
+
+  
+}
