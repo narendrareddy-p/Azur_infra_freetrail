@@ -203,7 +203,7 @@ resource "azurerm_subnet_network_security_group_association" "devops-infra" {
 
 ##Creating a windows vm
 
-resource "azurerm_windows_virtual_machine" "devops-vm-demo" {
+resource "azurerm_windows_virtual_machine" "devops-vm-demo1" {
   
   name = var.vm_name #"Devops-infra-vm"
   resource_group_name = azurerm_resource_group.devops.name
@@ -212,6 +212,7 @@ resource "azurerm_windows_virtual_machine" "devops-vm-demo" {
   admin_username = var.admin_username #"narendra"
   admin_password = "Narendra@19"
   vm_agent_platform_updates_enabled                      = true
+  availability_set_id = azurerm_availability_set.devops.id
   network_interface_ids  = [
     azurerm_network_interface.devops-infra.id,
     azurerm_network_interface.devops-infratwo.id,
