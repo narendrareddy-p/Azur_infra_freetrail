@@ -12,7 +12,20 @@ resource "azurerm_resource_group" "devops" {
 
 ## Storage account
 resource "azurerm_storage_account" "devopsstorage996697" {
+  
   name                     = "devopsstorage996697"
+  resource_group_name      = azurerm_resource_group.devops.name
+  location                 = azurerm_resource_group.devops.location
+  account_tier             = "Standard"
+  account_replication_type = "LRS"
+  tags = azurerm_resource_group.devops.tags
+
+}
+
+resource "azurerm_storage_account" "devopsstorage9966970" {
+  
+  count = 2
+  name                     = "devopsstorage9966970${count.index}"
   resource_group_name      = azurerm_resource_group.devops.name
   location                 = azurerm_resource_group.devops.location
   account_tier             = "Standard"
