@@ -101,8 +101,8 @@ resource "azurerm_public_ip" "bastion" {
     name = "bastion-publicip"
     resource_group_name = azurerm_resource_group.devops.name
     location = azurerm_resource_group.devops.location
-    allocation_method = "static"
-    sku = "standard"
+    allocation_method = "Static"
+    sku = "Standard"
   
 }
 
