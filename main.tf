@@ -215,7 +215,7 @@ resource "azurerm_windows_virtual_machine" "devops-vm-demo1" {
   availability_set_id = azurerm_availability_set.devops.id
   network_interface_ids  = [
     azurerm_network_interface.devops-infra.id,
-    azurerm_network_interface.devops-infratwo.id,
+    
 
   ] 
 
@@ -264,7 +264,7 @@ resource "azurerm_linux_virtual_machine" "linux-dev" {
     size = var.vm_size
     admin_username = var.admin_username #"narendra"
     admin_password = "Narendra@19"
-    network_interface_ids = [azurerm_network_interface.devops-infratwo,
+    network_interface_ids = [azurerm_network_interface.devops-infratwo.id,
     ]
     os_disk {
       caching              = "ReadWrite"
