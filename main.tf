@@ -264,6 +264,7 @@ resource "azurerm_linux_virtual_machine" "linux-dev" {
     size = var.vm_size
     admin_username = var.admin_username #"narendra"
     admin_password = "Narendra@19"
+    disable_password_authentication = false
     network_interface_ids = [azurerm_network_interface.devops-infratwo.id,
     ]
     os_disk {
