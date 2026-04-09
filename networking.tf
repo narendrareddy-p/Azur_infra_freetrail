@@ -24,20 +24,14 @@ resource "azurerm_subnet" "devops" {
   
 }
 
-resource "azurerm_subnet" "subnet1" {
-    name = "infra_devops_dev1"
+resource "azurerm_subnet" "bastion" {
+    name = "infra_devops_bastion"
     virtual_network_name = azurerm_virtual_network.vnet.name
     resource_group_name = azurerm_resource_group.devops.name
     address_prefixes = [local.subnet_address_prefix[1]]
   
 }
-resource "azurerm_subnet" "bastion" {
-    name = "bation-subnet"
-    virtual_network_name = azurerm_virtual_network.vnet.name
-    resource_group_name = azurerm_resource_group.devops.name
-    address_prefixes = ["10.0.1.48/27" ]
-  
-}
+
 
 ##Network Interface
 
