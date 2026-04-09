@@ -24,8 +24,8 @@ resource "azurerm_subnet" "devops" {
   
 }
 
-resource "azurerm_subnet" "bastion" {
-    name = "infra_devops_bastion"
+resource "azurerm_subnet" "bastion-host" {
+    name = "AzureBastionSubnet"
     virtual_network_name = azurerm_virtual_network.vnet.name
     resource_group_name = azurerm_resource_group.devops.name
     address_prefixes = [local.subnet_address_prefix[1]]
